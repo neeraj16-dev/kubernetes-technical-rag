@@ -1,0 +1,82 @@
+[
+  {
+    "question": "What port does the Kubernetes API server listen on by default?",
+    "expected_chunk_ids": [
+      "08_Security_p0_c199",
+      "NSA_Kubernetes_Hardening_Guidance_1.0_p0_c147"
+    ],
+    "ground_truth": "By default, the Kubernetes API server listens on port 6443 on the first non-localhost network interface and is protected by TLS."
+  },
+  {
+    "question": "Which flags can be used to configure the Kubernetes API server's secure port and listening IP address?",
+    "expected_chunk_ids": [
+      "08_Security_p0_c199",
+      "NSA_Kubernetes_Hardening_Guidance_1.0_p0_c149"
+    ],
+    "ground_truth": "The --secure-port flag changes the port used by the Kubernetes API server, while the --bind-address flag changes the listening IP address."
+  },
+  {
+    "question": "What happens when a Kubernetes API request cannot be authenticated?",
+    "expected_chunk_ids": [
+      "13_Extensions_p0_c34",
+      "CIS_Kubernetes_V1.20_Benchmark_v1.0.0_PDF_p0_c778"
+    ],
+    "ground_truth": "If a Kubernetes API request cannot be authenticated, it is rejected with HTTP status code 401."
+  },
+  {
+    "question": "What happens when all configured Kubernetes authorization modules deny a request?",
+    "expected_chunk_ids": [
+      "08_Security_p0_c212",
+      "NSA_Kubernetes_Hardening_Guidance_1.0_p0_c149"
+    ],
+    "ground_truth": "If all configured authorization modules deny the request, Kubernetes denies the request with HTTP status code 403."
+  },
+  {
+    "question": "What is the difference between authentication and authorization in Kubernetes API access?",
+    "expected_chunk_ids": [
+      "11_Administration_p0_c08",
+      "NSA_Kubernetes_Hardening_Guidance_1.0_p0_c175"
+    ],
+    "ground_truth": "Authentication determines who is making the request, while authorization determines whether that authenticated user has permission to perform the requested action on the specified object."
+  },
+  {
+    "question": "How are Kubernetes Secrets stored by default in etcd?",
+    "expected_chunk_ids": [
+      "07_Configuration_p0_c49",
+      "NSA_Kubernetes_Hardening_Guidance_1.0_p0_c165"
+    ],
+    "ground_truth": "Kubernetes Secret objects are stored unencrypted by default in etcd, although encryption of Secret data at rest can be configured."
+  },
+  {
+    "question": "Why should access to Kubernetes Secrets be restricted?",
+    "expected_chunk_ids": [
+      "NSA_Kubernetes_Hardening_Guidance_1.0_p0_c178",
+      "CIS_Kubernetes_V1.20_Benchmark_v1.0.0_PDF_p0_c745"
+    ],
+    "ground_truth": "Access to Secrets should be restricted because Secret objects contain sensitive information, and users who can list or access Secrets, or create Pods that use Secrets, may be able to obtain their contents."
+  },
+  {
+    "question": "What happens to data in an emptyDir volume when a Pod is removed from a node?",
+    "expected_chunk_ids": [
+      "06_Storage_p0_c21",
+      "06_Storage_p0_c22"
+    ],
+    "ground_truth": "When a Pod is removed from a node, the data in its emptyDir volume is permanently deleted. However, a container crash does not remove the Pod from the node, so emptyDir data is safe across container crashes."
+  },
+  {
+    "question": "What is the purpose of a ConfigMap volume in Kubernetes?",
+    "expected_chunk_ids": [
+      "06_Storage_p0_c15",
+      "07_Configuration_p0_c02"
+    ],
+    "ground_truth": "A ConfigMap volume allows configuration data stored in a ConfigMap to be injected into a Pod and consumed by containerized applications as files."
+  },
+  {
+    "question": "Why can using a hostPath volume create security risks?",
+    "expected_chunk_ids": [
+      "06_Storage_p0_c35",
+      "08_Security_p0_c241"
+    ],
+    "ground_truth": "A hostPath volume exposes files or directories from the host node's filesystem to a Pod. This can expose privileged system credentials or APIs, such as the kubelet or container runtime socket, and can potentially be used to escape the container or attack other parts of the cluster."
+  }
+]
